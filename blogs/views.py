@@ -1,10 +1,11 @@
 from django.shortcuts import render
-
+from .models import Blogs,Category
 # Create your views here.
 from django.views.generic import ListView
 from .models import Category
 
-class CategoryListView(ListView):
-    model = Category
-    template_name = 'categories/category_list.html'  # Path to your template
-    context_object_name = 'categories' 
+def category_view(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+    posts = BlogPost.objects.filter(category=category)
+    return render(request, 'category_detail.html', {'category': category, 'posts': posts})
+

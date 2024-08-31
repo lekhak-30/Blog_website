@@ -1,0 +1,9 @@
+<!-- category_detail.html -->
+<h1>{{ category.name }}</h1>
+<ul>
+    {% for post in posts %}
+        <li>{{ post.title }}</li>
+    {% empty %}
+        <li>No posts available in this category.</li>
+    {% endfor %}
+</ul>

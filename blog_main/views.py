@@ -8,3 +8,4 @@ def home(request):
         'featured_post':featured_post
     }
     return render(request, 'home.html',context)
+
